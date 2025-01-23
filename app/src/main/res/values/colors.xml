@@ -1,0 +1,11 @@
+<resources>
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="black">#000000</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="buttonLightBlue">#ADD8E6</color> <!-- Lys blå -->
+    <color name="buttonTextLight">#000000</color> <!-- Sort tekst -->
+    <color name="buttonDarkBlue">#00008B</color> <!-- Mørk blå -->
+    <color name="buttonTextDark">#FFFFFF</color> <!-- Hvid tekst -->
+</resources>

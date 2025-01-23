@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.finalopg1">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"> <!-- Angiver AppTheme som standard -->
+
+        <!-- MainActivity definition as the launcher activity -->
+        <activity android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- UserActivity definition -->
+        <activity android:name=".UserActivity" />
+
+        <!-- AdminActivity definition -->
+        <activity android:name=".AdminActivity" />
+
+        <!-- LoginActivity definition -->
+        <activity android:name=".LoginActivity" />
+
+    </application>
+
+</manifest>

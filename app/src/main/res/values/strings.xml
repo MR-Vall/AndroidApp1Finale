@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Final Opg1</string>
+        <!-- Tablet brands for Admin -->
+        <string-array name="tablet_brands">
+            <item>Alle</item>
+            <item>Brand A</item>
+            <item>Brand B</item>
+        </string-array>
+
+        <!-- Cable types for Admin -->
+        <string-array name="cable_types">
+            <item>Alle</item>
+            <item>None</item>
+            <item>USB-C</item>
+            <item>Micro-USB</item>
+        </string-array>
+
+        <!-- Tablet brands for User -->
+        <string-array name="user_tablet_brands">
+            <item>Brand A</item>
+            <item>Brand B</item>
+        </string-array>
+
+        <!-- Cable types for User -->
+        <string-array name="user_cable_types">
+            <item>None</item>
+            <item>USB-C</item>
+            <item>Micro-USB</item>
+        </string-array>
+</resources>

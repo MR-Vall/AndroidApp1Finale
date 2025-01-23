@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16sp">
+
+    <!-- Filter: Tablet Brand -->
+    <Spinner
+        android:id="@+id/spinner_filter_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="16sp"
+        android:hint="Filtrer efter tablet-mærke" />
+
+    <!-- Filter: Cable Type -->
+    <Spinner
+        android:id="@+id/spinner_filter_cable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16sp"
+        android:hint="Filtrer efter kabeltype" />
+
+    <!-- Filter: Start Date -->
+    <EditText
+        android:id="@+id/edit_start_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Startdato (yyyy-MM-dd)"
+        android:layout_marginBottom="16sp" />
+
+    <!-- Filter: End Date -->
+    <EditText
+        android:id="@+id/edit_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Slutdato (yyyy-MM-dd)"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Apply Filters Button -->
+    <Button
+        android:id="@+id/button_apply_filters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anvend filtre"
+        style="@style/ButtonStyle"
+        android:layout_marginBottom="16sp" />
+
+    <!-- ListView for displaying loans -->
+    <ListView
+        android:id="@+id/list_view_loans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

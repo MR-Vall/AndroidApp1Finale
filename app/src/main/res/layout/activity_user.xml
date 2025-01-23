@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Spinner for tablet brands -->
+    <Spinner
+        android:id="@+id/spinner_tablet_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="16sp"
+        android:hint="Vælg tablet mærke" />
+
+    <!-- Spinner for cable types -->
+    <Spinner
+        android:id="@+id/spinner_cable_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Vælg kabeltype (valgfrit)" />
+
+    <!-- Borrower's name -->
+    <EditText
+        android:id="@+id/edit_borrower_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Låners navn"
+        android:layout_marginBottom="16sp"
+        android:inputType="textPersonName" />
+
+    <!-- Contact information -->
+    <EditText
+        android:id="@+id/edit_contact_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Indtast e-mail eller telefonnummer"
+        android:layout_marginBottom="16sp"
+        android:inputType="text" />
+
+    <!-- Button to register loan -->
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
+        android:text="Registrer lån" />
+</LinearLayout>
