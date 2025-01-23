@@ -22,10 +22,11 @@ import java.util.Locale;
  */
 public class UserActivity extends AppCompatActivity {
 
-    private Spinner spinnerTabletBrand, spinnerCableType;
-    private EditText editBorrowerName, editContactInfo;
-    private Button buttonRegister;
-    private Database database;
+    // Declare UI elements and the database instance
+    private Spinner spinnerTabletBrand, spinnerCableType; // Dropdowns for selecting tablet brand and cable type
+    private EditText editBorrowerName, editContactInfo;   // Input fields for borrower name and contact information
+    private Button buttonRegister;                       // Button for submitting the loan form
+    private Database database;                           // Database instance for storing loan data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,51 +36,53 @@ public class UserActivity extends AppCompatActivity {
         // Initialize the database
         database = new Database(this);
 
-        // Find views by ID
-        spinnerTabletBrand = findViewById(R.id.spinner_tablet_brand);
-        spinnerCableType = findViewById(R.id.spinner_cable_type);
-        editBorrowerName = findViewById(R.id.edit_borrower_name);
-        editContactInfo = findViewById(R.id.edit_contact_info);
-        buttonRegister = findViewById(R.id.button_register);
+        // Find views by their IDs
+        spinnerTabletBrand = findViewById(R.id.spinner_tablet_brand); // Spinner for tablet brands
+        spinnerCableType = findViewById(R.id.spinner_cable_type);     // Spinner for cable types
+        editBorrowerName = findViewById(R.id.edit_borrower_name);     // Input field for borrower's name
+        editContactInfo = findViewById(R.id.edit_contact_info);       // Input field for contact information
+        buttonRegister = findViewById(R.id.button_register);          // Register button
 
-        // Set adapters for the spinners
+        // Set up the adapter for tablet brands spinner
         ArrayAdapter<CharSequence> tabletAdapter = ArrayAdapter.createFromResource(this,
                 R.array.user_tablet_brands, android.R.layout.simple_spinner_item);
         tabletAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTabletBrand.setAdapter(tabletAdapter);
 
+        // Set up the adapter for cable types spinner
         ArrayAdapter<CharSequence> cableAdapter = ArrayAdapter.createFromResource(this,
                 R.array.user_cable_types, android.R.layout.simple_spinner_item);
         cableAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCableType.setAdapter(cableAdapter);
 
-        // Set onClickListener for the register button
+        // Set up the click listener for the register button
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tabletBrand = spinnerTabletBrand.getSelectedItem().toString();
-                String cableType = spinnerCableType.getSelectedItem().toString();
-                String borrowerName = editBorrowerName.getText().toString().trim();
-                String contactInfo = editContactInfo.getText().toString().trim();
-                String loanDate = getCurrentDateTime();
+                // Retrieve data from the input fields and spinners
+                String tabletBrand = spinnerTabletBrand.getSelectedItem().toString(); // Selected tablet brand
+                String cableType = spinnerCableType.getSelectedItem().toString();     // Selected cable type
+                String borrowerName = editBorrowerName.getText().toString().trim();   // Borrower's name
+                String contactInfo = editContactInfo.getText().toString().trim();     // Contact information
+                String loanDate = getCurrentDateTime();                               // Current date and time
 
                 // Validate required fields
                 if (tabletBrand.isEmpty() || borrowerName.isEmpty()) {
                     Toast.makeText(UserActivity.this, "Udfyld venligst alle obligatoriske felter!", Toast.LENGTH_SHORT).show();
-                    return;
+                    return; // Stop execution if fields are empty
                 }
 
-                // Validate contact information (email or phone)
+                // Validate contact information (either email or phone)
                 if (!isValidEmail(contactInfo) && !isValidPhone(contactInfo)) {
                     Toast.makeText(UserActivity.this, "Indtast venligst en gyldig e-mail eller telefonnummer!", Toast.LENGTH_SHORT).show();
-                    return;
+                    return; // Stop execution if contact information is invalid
                 }
 
                 // Insert the loan into the database
                 long result = database.insertLoan(tabletBrand, cableType, borrowerName, contactInfo, loanDate);
                 if (result != -1) {
                     Toast.makeText(UserActivity.this, "Lån registreret!", Toast.LENGTH_SHORT).show();
-                    finish(); // Close the activity
+                    finish(); // Close the activity if the loan is successfully registered
                 } else {
                     Toast.makeText(UserActivity.this, "Kunne ikke registrere lånet!", Toast.LENGTH_SHORT).show();
                 }
@@ -93,7 +96,7 @@ public class UserActivity extends AppCompatActivity {
      * @return True if the email is valid, false otherwise.
      */
     private boolean isValidEmail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches(); // Check email format
     }
 
     /**
@@ -102,7 +105,7 @@ public class UserActivity extends AppCompatActivity {
      * @return True if the phone number is valid, false otherwise.
      */
     private boolean isValidPhone(String phone) {
-        return android.util.Patterns.PHONE.matcher(phone).matches();
+        return android.util.Patterns.PHONE.matcher(phone).matches(); // Check phone number format
     }
 
     /**
@@ -110,7 +113,7 @@ public class UserActivity extends AppCompatActivity {
      * @return The current date and time as a string.
      */
     private String getCurrentDateTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        return sdf.format(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()); // Define the date format
+        return sdf.format(new Date()); // Return the current date and time
     }
 }
